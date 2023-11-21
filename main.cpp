@@ -73,6 +73,142 @@ int ang = 20;
 int Dang = 10;
 int cnt = 1;
 float dx=88, dy=14.5, dz=10;
+int imgInd = 0;
+bool tvOn = false;
+
+vector<string>imagesForTv{
+ "TV/tv (1).jpg",
+"TV/tv (2).jpg",
+"TV/tv (3).jpg",
+"TV/tv (4).jpg",
+"TV/tv (5).jpg",
+"TV/tv (6).jpg",
+"TV/tv (7).jpg",
+"TV/tv (8).jpg",
+"TV/tv (9).jpg",
+"TV/tv (10).jpg",
+"TV/tv (11).jpg",
+"TV/tv (12).jpg",
+"TV/tv (13).jpg",
+"TV/tv (14).jpg",
+"TV/tv (15).jpg",
+"TV/tv (16).jpg",
+"TV/tv (17).jpg",
+"TV/tv (18).jpg",
+"TV/tv (19).jpg",
+"TV/tv (20).jpg",
+"TV/tv (21).jpg",
+"TV/tv (22).jpg",
+"TV/tv (23).jpg",
+"TV/tv (24).jpg",
+"TV/tv (25).jpg",
+"TV/tv (26).jpg",
+"TV/tv (27).jpg",
+"TV/tv (28).jpg",
+"TV/tv (29).jpg",
+"TV/tv (30).jpg",
+"TV/tv (31).jpg",
+"TV/tv (32).jpg",
+"TV/tv (33).jpg",
+"TV/tv (34).jpg",
+"TV/tv (35).jpg",
+"TV/tv (36).jpg",
+"TV/tv (37).jpg",
+"TV/tv (38).jpg",
+"TV/tv (39).jpg",
+"TV/tv (40).jpg",
+"TV/tv (41).jpg",
+"TV/tv (42).jpg",
+"TV/tv (43).jpg",
+"TV/tv (44).jpg",
+"TV/tv (45).jpg",
+"TV/tv (46).jpg",
+"TV/tv (47).jpg",
+"TV/tv (48).jpg",
+"TV/tv (49).jpg",
+"TV/tv (50).jpg",
+"TV/tv (51).jpg",
+"TV/tv (52).jpg",
+"TV/tv (53).jpg",
+"TV/tv (54).jpg",
+"TV/tv (55).jpg",
+"TV/tv (56).jpg",
+"TV/tv (57).jpg",
+"TV/tv (58).jpg",
+"TV/tv (59).jpg",
+"TV/tv (60).jpg",
+"TV/tv (61).jpg",
+"TV/tv (62).jpg",
+"TV/tv (63).jpg",
+"TV/tv (64).jpg",
+"TV/tv (65).jpg",
+"TV/tv (66).jpg",
+"TV/tv (67).jpg",
+"TV/tv (68).jpg",
+"TV/tv (69).jpg",
+"TV/tv (70).jpg",
+"TV/tv (71).jpg",
+"TV/tv (72).jpg",
+"TV/tv (73).jpg",
+"TV/tv (74).jpg",
+"TV/tv (75).jpg",
+"TV/tv (76).jpg",
+"TV/tv (77).jpg",
+"TV/tv (78).jpg",
+"TV/tv (79).jpg",
+"TV/tv (80).jpg",
+"TV/tv (81).jpg",
+"TV/tv (82).jpg",
+"TV/tv (83).jpg",
+"TV/tv (84).jpg",
+"TV/tv (85).jpg",
+"TV/tv (86).jpg",
+"TV/tv (87).jpg",
+"TV/tv (88).jpg",
+"TV/tv (89).jpg",
+"TV/tv (90).jpg",
+"TV/tv (91).jpg",
+"TV/tv (92).jpg",
+"TV/tv (93).jpg",
+"TV/tv (94).jpg",
+"TV/tv (95).jpg",
+"TV/tv (96).jpg",
+"TV/tv (97).jpg",
+"TV/tv (98).jpg",
+"TV/tv (99).jpg",
+"TV/tv (100).jpg",
+"TV/tv (101).jpg",
+"TV/tv (102).jpg",
+"TV/tv (103).jpg",
+"TV/tv (104).jpg",
+"TV/tv (105).jpg",
+"TV/tv (106).jpg",
+"TV/tv (107).jpg",
+"TV/tv (108).jpg",
+"TV/tv (109).jpg",
+"TV/tv (110).jpg",
+"TV/tv (111).jpg",
+"TV/tv (112).jpg",
+"TV/tv (113).jpg",
+"TV/tv (114).jpg",
+"TV/tv (115).jpg",
+"TV/tv (116).jpg",
+"TV/tv (117).jpg",
+"TV/tv (118).jpg",
+"TV/tv (119).jpg",
+"TV/tv (120).jpg",
+"TV/tv (121).jpg",
+"TV/tv (122).jpg",
+"TV/tv (123).jpg",
+"TV/tv (124).jpg",
+"TV/tv (125).jpg",
+"TV/tv (126).jpg",
+"TV/tv (127).jpg",
+"TV/tv (128).jpg",
+"TV/tv (129).jpg",
+"TV/tv (130).jpg",
+"TV/tv (131).jpg"
+};
 
 vector<float> cntrlPoints
 {
@@ -508,7 +644,7 @@ int main()
     glfwSetScrollCallback(window, scroll_callback);
 
     // tell GLFW to capture our mouse
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
     // glad: load all OpenGL function pointers
     // ---------------------------------------
@@ -740,7 +876,7 @@ int main()
 
 
         //projection matrix and view matrix
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 200.0f);
         glm::mat4 view = camera.GetViewMatrix();
 
         //light declarations
@@ -1084,8 +1220,21 @@ int main()
         //tv
         model = transform(15, 9.7, 114, rotateAngle_X, rotateAngle_Y, rotateAngle_Z, 10, 6.3, -0.2);
         floorExtension.drawCubeWithMaterialisticProperty(lightingShader, model);
-        model = transform(15.2, 10.2, 113.8, rotateAngle_X, rotateAngle_Y, rotateAngle_Z, 9.6, 5.6, -0.1);
-        tv_cube.drawCubeWithTexture(lightingShaderWithTexture, model);
+        model = transform(15.2, 10.2, 113.7, rotateAngle_X, rotateAngle_Y, rotateAngle_Z, 9.6, 5.6, 0.1);
+        if (tvOn) {
+            tv_tex = loadTexture(imagesForTv[imgInd].c_str(), GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
+            tv_cube.setTextureProperty(tv_tex, tv_tex, 32.0f);
+            tv_cube.drawCubeWithTexture(lightingShaderWithTexture, model);
+
+            imgInd++;
+            imgInd %= imagesForTv.size();
+        }
+        else {
+            tv_tex = loadTexture(tv.c_str(), GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
+            tv_cube.setTextureProperty(tv_tex, tv_tex, 32.0f);
+            tv_cube.drawCubeWithTexture(lightingShaderWithTexture, model);
+            imgInd = 0;
+        }
 
         //left side poster main door
         model = transform(59, 5, 90, rotateAngle_X, rotateAngle_Y, rotateAngle_Z, -0.1, 10, 15);
@@ -2386,6 +2535,11 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     if (key == GLFW_KEY_L && action == GLFW_PRESS)
     {
         droneOn = !droneOn;
+    }
+
+    if (key == GLFW_KEY_0 && action == GLFW_PRESS)
+    {
+        tvOn = !tvOn;
     }
 }
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
