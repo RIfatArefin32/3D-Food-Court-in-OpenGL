@@ -369,7 +369,7 @@ unsigned int bezierLightsVAO;
 unsigned int bezierBottleVAO;
 
 
-Camera camera(glm::vec3(90.0f, 0.0f, 160.0f));  //initial camera position
+Camera camera(glm::vec3(35.0f, 13.0f, 250.0f));  //initial camera position
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -876,7 +876,7 @@ int main()
 
 
         //projection matrix and view matrix
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 200.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 300.0f);
         glm::mat4 view = camera.GetViewMatrix();
 
         //light declarations
@@ -970,16 +970,16 @@ int main()
         }
 
         //footpath
-        model = transform(-50, -6, 140, rotateAngle_X, rotateAngle_Y, rotateAngle_Z, 200, -2, 10);
+        model = transform(-100, -6, 140, rotateAngle_X, rotateAngle_Y, rotateAngle_Z, 250, -2, 10);
         RightSideWall2.drawCubeWithTexture(lightingShaderWithTexture, model);
         //roads
-        model = transform(-50, -8, 150, rotateAngle_X, rotateAngle_Y, rotateAngle_Z, 200, -1, 60);
+        model = transform(-100, -8, 150, rotateAngle_X, rotateAngle_Y, rotateAngle_Z, 250, -1, 60);
         road_cube.drawCubeWithTexture(lightingShaderWithTexture, model);
         //grass
-        model = transform(-50, -6, -25, rotateAngle_X, rotateAngle_Y, rotateAngle_Z, 200, -0.2, 165);
+        model = transform(-100, -6, -50, rotateAngle_X, rotateAngle_Y, rotateAngle_Z, 250, -0.2, 190);
         grass_cube.drawCubeWithTexture(lightingShaderWithTexture, model);
 
-        model = transform(-50, -6, 200, rotateAngle_X, rotateAngle_Y, rotateAngle_Z, 200, -2, 10);
+        model = transform(-100, -6, 200, rotateAngle_X, rotateAngle_Y, rotateAngle_Z, 250, -2, 10);
         RightSideWall2.drawCubeWithTexture(lightingShaderWithTexture, model);
 
         //my clock
