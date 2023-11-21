@@ -233,7 +233,7 @@ unsigned int bezierLightsVAO;
 unsigned int bezierBottleVAO;
 
 
-Camera camera(glm::vec3(90.0f, 16.0f, 160.0f));  //initial camera position
+Camera camera(glm::vec3(90.0f, 0.0f, 160.0f));  //initial camera position
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
