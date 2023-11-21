@@ -13,6 +13,5 @@ This is a 3D food court using the theory of Computer Graphics and the complete p
 <img src="https://github.com/RIfatArefin32/3D-Food-Court-in-OpenGL/blob/main/Snapshots/Screenshot%20(21).png"  width="1200" height="600">
 <img src="https://github.com/RIfatArefin32/3D-Food-Court-in-OpenGL/blob/main/Snapshots/Screenshot%20(6).png"  width="1200" height="600">
 <img src="https://github.com/RIfatArefin32/3D-Food-Court-in-OpenGL/blob/main/Snapshots/Screenshot%20(8).png"  width="1200" height="600">
-<img src="https://github.com/RIfatArefin32/3D-Food-Court-in-OpenGL/blob/main/Snapshots/Screenshot%20(8).png"  width="1200" height="600">
 <img src="https://github.com/RIfatArefin32/3D-Food-Court-in-OpenGL/blob/main/Snapshots/Screenshot%20(19).png"  width="1200" height="600">
 <img src="https://github.com/RIfatArefin32/3D-Food-Court-in-OpenGL/blob/main/Snapshots/Screenshot%20(15).png"  width="1200" height="600">
