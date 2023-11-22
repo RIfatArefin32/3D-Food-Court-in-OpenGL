@@ -2,7 +2,7 @@
 This is a 3D food court using the theory of Computer Graphics and the complete project was made in OpenGL 3.3.
 
 
-<img src="https://github.com/RIfatArefin32/3D-Food-Court-in-OpenGL/blob/main/Snapshots/3D%20Food%20Court.jpg"  width="1200" height="600">
+<img src="https://github.com/RIfatArefin32/3D-Food-Court-in-OpenGL/blob/main/Snapshots/3D%20Food%20Court.jpg"  width="800" height="400">
 
 ## To run this project on your PC:
 <ul>
